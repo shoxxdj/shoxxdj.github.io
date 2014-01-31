@@ -7,7 +7,7 @@
 		 	player=document.getElementById('lecteur');
 
 			function player_start(){
-				var adresse=document.forms["adresse_serveur"].elements["address"];
+				var adresse=document.getElementById("addresse")[0].value;
 				var reader=document.getElementById('lecteur');
 				reader.src=adresse;
 				player.play();
@@ -45,7 +45,7 @@
 		<p>Listen to your radio !</p>
 		<form name="adresse_serveur">
 			<div class="input-group" style="width:60%">
-				<input type="text" class="form-control" name="address">
+				<input id="addresse" type="text" class="form-control" name="address">
 			</div>
 		</form>
 	<!--Player-->
