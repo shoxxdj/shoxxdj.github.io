@@ -4,7 +4,7 @@
 		<title>ShoxX Project Zone</title>
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
 		<script type="text/javascript">
-		var player=document.getElementById('lecteur');
+		 	player=document.getElementById('lecteur');
 
 			function player_start(){
 				var adresse=document.forms["adresse_serveur"].elements["address"];
@@ -16,7 +16,16 @@
 				lecteur.pause();
 			}
 			function player_volume_down(){
-
+				var actuel=player.volume;
+				if (actuel>0) {
+					player.volume=(actuel-0.1)
+				};
+			}
+			function player_volume_up(){
+				var actuel=player.volume;
+				if (actuel<1) {
+					player.volume=(actuel+0.1)
+				};
 			}
 		</script>
 	</head>
