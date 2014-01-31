@@ -1,38 +1,53 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>ShoxX Project Zone</title>
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
-</head>
-<body>
+	<head>
+		<title>ShoxX Project Zone</title>
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+		<script type="text/javascript">
+			function player_start(){
+				var adresse=document.forms["adresse_serveur"].elements["address"];
+				var reader=document.getElementById('lecteur');
+				reader.src=adresse;
+				play();
+			}
+			function player_stop(){
+				pause();
+			}
+		</script>
+	</head>
+	<body>
 
-<!-- Menu -->
-<ul class="nav nav-tabs nav-justified">
-  <li><a href="index.html">Home</a></li>
-  <li><a href="myradio.html">My Radio Live</a></li>
-</ul>
-<!--/Menu -->
+	<!-- Menu -->
+	<ul class="nav nav-tabs nav-justified">
+	  <li><a href="index.html">Home</a></li>
+	  <li><a href="myradio.html">My Radio Live</a></li>
+	</ul>
+	<!--/Menu -->
 
-<center>
-	<h1>Next Radio Show :</h1>
-	<h2>UN/KN/OWN</h2>
-	<br/>
-	<p>Listen to your radio !</p>
-	<div class="input-group" style="width:60%">
-		<input type="text" class="form-control" name="address">
-	  	<span class="input-group-addon">Listen</span>
-	</div>
-<!--Player-->
-	<div>
-		<button type="button" class="btn btn-default btn-lg">
-				<span class="glyphicon glyphicon-play"></span> 
-		</button>
-		<button type="button" class="btn btn-default btn-lg">
-				<span class="glyphicon glyphicon-stop"></span>
-		</button>
-	</div>
-<!--/Player-->
-</center>
+	<center>
+		<h1>Next Radio Show :</h1>
+		<h2>UN/KN/OWN</h2>
+		<br/>
+		<p>Listen to your radio !</p>
+		<form name="adresse_serveur">
+			<div class="input-group" style="width:60%">
+				<input type="text" class="form-control" name="address">
+			</div>
+		</form>
+	<!--Player-->
+		<div>
+			<button type="button" class="btn btn-default btn-lg" onclick="player_start()">
+					<span class="glyphicon glyphicon-play"></span> 
+			</button>
+			<button type="button" class="btn btn-default btn-lg" onclick="player_stop()">
+					<span class="glyphicon glyphicon-stop"></span>
+			</button>
+		</div>
+	<!--/Player-->
+			<video id="lecteur" src="">
 
-</body>
+			</video>
+	</center>
+
+	</body>
 </html>
