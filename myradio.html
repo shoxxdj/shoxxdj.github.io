@@ -7,21 +7,25 @@
 		 	player=document.getElementById('lecteur');
 
 			function player_start(){
+				player=document.getElementById('lecteur');
 				var adresse=document.getElementById("addresse").value;
 				var reader=document.getElementById('lecteur');
 				reader.src=adresse;
 				player.play();
 			}
 			function player_stop(){
+				player=document.getElementById('lecteur');
 				player.pause();
 			}
 			function player_volume_down(){
+				player=document.getElementById('lecteur');
 				var actuel=player.volume;
 				if (actuel>0) {
 					player.volume=(actuel-0.1)
 				};
 			}
 			function player_volume_up(){
+				player=document.getElementById('lecteur');
 				var actuel=player.volume;
 				if (actuel<1) {
 					player.volume=(actuel+0.1)
@@ -66,7 +70,7 @@
 
 		</div>
 	<!--/Player-->
-			<video controls id="lecteur" src="" style="display:none">
+			<video controls autoplay id="lecteur" src="" style="display:none">
 
 			</video>
 	</center>
