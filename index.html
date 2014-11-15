@@ -30,6 +30,9 @@
 		height: 100%;
 		z-index: 1;
 		} */
+		button{
+			text-align: center; class="btn btn-primary"
+		}
 	</style>
 </head>
 <body>
@@ -65,19 +68,20 @@
 </div>
 <div class="row">
 	<div class="col-md-2 col-md-offset-1">
-		<button onclick="encode()">Encode</button>
+		<button class="btn btn-primary" onclick="encode()">Encode</button>
 	</div>
 	<div class="col-md-2 col-md-offset-1">
-		<button onclick="decode('base64')">Decode</button>
+		<button class="btn btn-primary" onclick="decode('base64')">Decode</button>
 	</div>
 	<div class="col-md-2 col-md-offset-1">
-		<button onclick="decode('binaire')">Decode</button>
+		<button class="btn btn-primary" onclick="decode('binaire')">Decode</button>
 	</div>
 
 </div>
+<hr/>
 <!-- LIGNE 2 --> 
 <div class="row">
-	<div class="col-md-2 col-md-offset-3">
+	<div class="col-md-2 col-md-offset-1">
 		<textarea class="form-control" rows="6" id="hexadecimal" type="text" placeholder="Hexadecimal"></textarea>
 	</div>
 	<div class="col-md-2 col-md-offset-1">
@@ -85,11 +89,11 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-2 col-md-offset-3">
-		<button onclick="decode('hexadecimal')">Decode</button>
+	<div class="col-md-2 col-md-offset-1">
+		<button class="btn btn-primary" onclick="decode('hexadecimal')">Decode</button>
 	</div>
 	<div class="col-md-2 col-md-offset-1">
-		<button onclick="decode('decimal')">Decode</button>
+		<button class="btn btn-primary" onclick="decode('decimal')">Decode</button>
 	</div>
 
 </div>
