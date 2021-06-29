@@ -5,9 +5,16 @@
 <body>
 
 <div class="container">
+	<center><h1>Free Faceit Stats</h1></center>
+</div>
+
+<div class="container">
     <div class="row">
-        <div class="col-8">
-            <input class="form-control" type="text" name="username"/>
+        <div class="col-2">
+            <label class="form-label" for="username">Faceit Username :</label>
+        </div>
+        <div class="col-6">
+            <input id="username" class="form-control" type="text" name="username"/>
         </div>
         <div class="col-4">
             <button class="btn btn-success" id="submitBtn">Go</button>
@@ -205,7 +212,6 @@
             guid=datas.payload.guid;
 
             $.get('https://api.faceit.com/stats/v1/stats/time/users/'+guid+'/games/csgo',function(data){
-                alert(data.length);
                 faceitDatas=data;
                 updateGraphs();      
             });
@@ -214,11 +220,13 @@
         });
 
     })
-
-
-
    
 </script>
+
+<p>
+	<hr/>
+	<center>2021 <a href="https://twitter.com/shoxxdj">@shoxxdj</a> </center>
+</p>
 
 </body>
 
