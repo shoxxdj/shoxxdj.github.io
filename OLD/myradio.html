@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>ShoxX Project Zone</title>
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+		<script type="text/javascript">
+			function player_start(){
+				player=document.getElementById('lecteur');
+				var adresse=document.getElementById("addresse").value;
+				var reader=document.getElementById('lecteur');
+				reader.src=adresse;
+				player.play();
+			}
+			function player_stop(){
+				player=document.getElementById('lecteur');
+				player.pause();
+			}
+			function player_volume_down(){
+				player=document.getElementById('lecteur');
+				var actuel=player.volume;
+				if (actuel>0) {
+					player.volume=(actuel-0.1)
+				};
+			}
+			function player_volume_up(){
+				player=document.getElementById('lecteur');
+				var actuel=player.volume;
+				if (actuel<1) {
+					player.volume=(actuel+0.1)
+				};
+			}
+		</script>
+	</head>
+	<body>
+
+	<!-- Menu -->
+	<ul class="nav nav-tabs nav-justified">
+	  <li><a href="index.html">Home</a></li>
+	  <li><a href="myradio.html">My Radio Live</a></li>
+	</ul>
+	<!--/Menu -->
+
+	<center>
+		<h1>Next Radio Show :</h1>
+		<h2>UN/KN/OWN</h2>
+		<br/>
+		<p>Listen to your radio !</p>
+		<form name="adresse_serveur">
+			<div class="input-group" style="width:60%">
+				<input id="addresse" type="text" class="form-control" name="address">
+			</div>
+		</form>
+	<!--Player-->
+		<div>
+			<button type="button" class="btn btn-default btn-lg" onclick="player_start()">
+					<span class="glyphicon glyphicon-play"></span> 
+			</button>
+			<button type="button" class="btn btn-default btn-lg" onclick="player_stop()">
+					<span class="glyphicon glyphicon-stop"></span>
+			</button>
+			<button type="button" class="btn btn-default btn-lg" onclick="player_volume_down()">
+					<span class="glyphicon glyphicon-volume-down"></span>
+			</button>
+			<button type="button" class="btn btn-default btn-lg" onclick="player_volume_up()">
+					<span class="glyphicon glyphicon-volume-up"></span>
+			</button>
+
+
+		</div>
+	<!--/Player-->
+			<video controls autoplay id="lecteur" src="" style="display:none">
+
+			</video>
+	</center>
+
+	</body>
+</html>

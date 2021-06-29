@@ -1,0 +1,226 @@
+<html>
+<head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            <input class="form-control" type="text" name="username"/>
+        </div>
+        <div class="col-4">
+            <button class="btn btn-success" id="submitBtn">Go</button>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-6">
+            <canvas id="eloChart"></canvas>
+        </div>
+        <div class="col-6">
+            <canvas id="kdChart"></canvas>
+        </div>
+    </div>
+        <div class="row">
+        <div class="col-6">
+            <canvas id="krChart"></canvas>
+        </div>
+        <div class="col-6">
+            <canvas id="hsChart"></canvas>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <canvas id="phsChart"></canvas>
+        </div>
+        <div class="col-6">
+            <canvas id="hsChart"></canvas>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+
+<script type="text/javascript">
+
+</script>
+
+
+<script>
+    function updateGraphs(){
+
+    faceitDatas.sort(function(a, b) {
+      // var keyA = new Date(a.updated_at),
+      //   keyB = new Date(b.updated_at);
+      // Compare the 2 dates
+      let keyA=a.date;
+      let keyB=b.date;
+      if (keyA < keyB) return -1;
+      if (keyA > keyB) return 1;
+      return 0;
+    });
+
+    let eloEvolution = [];
+    let maps = [];
+    let kd=[];
+    let kr=[];
+    let hs=[];
+    let phs=[];
+
+    faceitDatas.forEach(function(match){
+        eloEvolution.push(match.elo);
+        maps.push(match.i1);
+        kd.push(match.c2);
+        kr.push(match.c3);
+        hs.push(match.i13);
+        phs.push(match.c4);
+    });
+
+
+
+    var ctx = document.getElementById('eloChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'line',
+
+        // The data for our dataset
+        data: {
+            labels: maps,
+            datasets: [{
+                label: 'ELO',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: eloEvolution
+            }]
+        },
+
+        // Configuration options go here
+        options: {}
+    });
+
+    var ctx = document.getElementById('krChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'line',
+
+        // The data for our dataset
+        data: {
+            labels: maps,
+            datasets: [{
+                label: 'K/R',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: kr
+            }]
+        },
+        // Configuration options go here
+        options: {}
+    });
+
+    var ctx = document.getElementById('kdChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'line',
+
+        // The data for our dataset
+        data: {
+            labels: maps,
+            datasets: [{
+                label: 'K/D',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: kd
+            }]
+        },
+        // Configuration options go here
+        options: {}
+    });
+
+    var ctx = document.getElementById('hsChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'line',
+
+        // The data for our dataset
+        data: {
+            labels: maps,
+            datasets: [{
+                label: 'HS',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: hs
+            }]
+        },
+        // Configuration options go here
+        options: {}
+    });
+
+    var ctx = document.getElementById('phsChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'line',
+
+        // The data for our dataset
+        data: {
+            labels: maps,
+            datasets: [{
+                label: '%HS',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: phs
+            }]
+        },
+        // Configuration options go here
+        options: {}
+    });
+    
+
+
+    
+    }
+
+
+</script>
+
+<script type="text/javascript">
+
+    let username="";
+
+    let guid='';
+    var faceitDatas=[];
+    $("#submitBtn").click(function(){
+
+        username=$("input[name='username']").val();
+        $.get('https://api.faceit.com/core/v1/nicknames/'+username,function(datas){
+            console.log(datas.payload.guid);
+            guid=datas.payload.guid;
+
+            $.get('https://api.faceit.com/stats/v1/stats/time/users/'+guid+'/games/csgo',function(data){
+                alert(data.length);
+                faceitDatas=data;
+                updateGraphs();      
+            });
+
+
+        });
+
+    })
+
+
+
+   
+</script>
+
+</body>
+
+
+</html>
