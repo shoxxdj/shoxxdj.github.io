@@ -4,12 +4,10 @@ date: "2019-07-10"
 categories:
   - "iot"
   - "writeups"
-coverImage: "1_cDY8QwW_IRNuZl5xuJJqbA.png"
+image: "/medias/writeups/dvid-hardware-find-the-datasheet/1_cDY8QwW_IRNuZl5xuJJqbA.png"
 ---
 
 Dvid est un projet créé par [@Vulcainreo](https://twitter.com/Vulcainreo) afin de faciliter l’apprentissage des attaques sur des devices IOT. Concrètement c'est un package vendu pour ~30€ comprenant une board, des modules ( bluetooth ect ) et des outils d'attaques ( pour la version complète ). Voyons ensemble le writeup de la première épreuve !
-
-<!--more-->
 
 ### Installation
 

@@ -6,8 +6,8 @@ hero:
   name: "shoxxdj.fr"
   text: "Le blog d'un pentester bidouilleur"
   image:
-   src: /medias/site/me.jpg
-  tagline: 
+    src: /medias/site/me.jpg
+  tagline:
   actions:
     - theme: brand
       text: Contact
@@ -15,10 +15,12 @@ hero:
 
 features:
   - title: Articles
-    details: Différents articles de blog 
+    details: Différents articles de blog
+    link: /articles
   - title: CVE
     details: Mes CVEs et leurs histoires
+    link: /cve
   - title: Writeups
     details: Des writeups de challenges & CTF
+    link: /writeups
 ---
-
