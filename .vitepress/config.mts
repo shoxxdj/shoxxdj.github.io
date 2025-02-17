@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import imageFigures from 'markdown-it-image-figures';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -27,5 +28,16 @@ export default defineConfig({
       { icon: 'github', link: 'https://github.com/shoxxdj' },
       { icon: 'twitter',link: 'https://x.com/shoxxdj'}
     ]
-  }
+  },
+  markdown:{
+	  config:(md)=>{
+      md.use(imageFigures,{
+        figcaption:'alt',
+        copyAttrs: '^class$',
+        lazy: true,
+        async: true,
+        classes:'lazy'
+      });
+		}		
+	  }
 })

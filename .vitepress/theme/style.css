@@ -137,3 +137,14 @@
   --docsearch-primary-color: var(--vp-c-brand-1) !important;
 }
 
+figure{
+  display: flex;
+    width: 100%;
+    align-items: center;
+    align-content: space-around;
+    flex-wrap: wrap;
+    flex-direction: column;
+    font-style: italic;
+    font-style: underline;
+    text-decoration: underline;
+}
