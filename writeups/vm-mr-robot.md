@@ -1,7 +1,7 @@
 ---
 title: VM - Mr Robot
 description: "La série Mr Robot est un peu comme la série que l'on attendais tous, celle ou on peut parler d'informatique sans forcement tomber dans les clichés. Le site vulnhub propose un challenge autour du thème de cette série. En voici le writeup"
-date: 2024-02-09
+date: 2016-09-21
 image: "/medias/writeups/mr-robot/image.jpeg"
 ---
 
