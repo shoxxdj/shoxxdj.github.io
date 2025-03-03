@@ -6,6 +6,9 @@ export default defineConfig({
   title: "shoxxdj.fr",
   description: "Le blog d'un pentester bidouilleur",
   themeConfig: {
+	      search: {
+      provider: 'local'
+    },
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
