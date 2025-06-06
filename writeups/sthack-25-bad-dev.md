@@ -879,6 +879,36 @@ And voila :).
 
 ## Conception du challenge
 
-```
+L'une des seules choses que je savais avant de commencer à écrire ce challenge, c'est que je voulais qu'il tourne autour d'une XSS. Depuis quelques années j'ai une affection particulière pour ces vulnérabilités.
 
-```
+Cependant, un mois avant l'évènement, rien de plus. J'ai donc pris une feuille, écrit "XSS" au milieu et puis je l'ai regardé, j'ai écrit plein de choses et je l'ai jettée.
+
+J'ai pris une feuille, à nouveau écrit "XSS" ...
+
+Petit à petit les choses se sont affinées. Résoudre un captcha au travers d'une XSS était une idée qui me plaisait bien, ainsi l'attaquant se retrouvera avec un compte, oui mais pour faire quoi ?
+
+Cette étape à été la plus longue à décider. Je ne voulait pas mettre en place une RCE identiques aux années précédantes. Et puis le temps manquait, et j'ai alors eu l'idée de vouloir exploiter un bug logique.
+
+Le concept était que l'utilisateur devrait acheter deux élléments, mais ne disposerait pas assez d'argent. Ainsi à l'aide d'un bug logique il serait possible d'obtenir un remboursement d'un fichier téléchargé et ainsi obtenir le second.
+
+Pratique / Théorie et manque de temps, et voici cette idée qui tombe à l'eau.
+
+Après une nuit de réflexion, je me suis dit que le mieux serait d'exploiter un bug de code. Le code serait accessible evidement. Un classique certes, mais après avoir trouvé une librairie permettant de créer des clefs de chiffrement dépendante d'une seed manipulable tout les élléments étaient présents.
+
+Presque tous ! Car à l'origine, je souhaitait que la XSS serve uniquement à créer le compte. Mais pourquoi sous utiliser l'éllement principal de l'épreuve ? Ainsi c'était décidé, tout devra se faire au travers de la XSS.
+
+![Reflexion initale](/medias/writeups/bad-dev/2025-06-06-17-31-27-image.png)
+
+Dans la conception pas de problème. En pratique, cela implique de devoir gérer les spécificités du CORS.
+
+Car oui, envoyer des cookies vers un domaine tiers en javascript n'est pas si trivial. Cela à forcé la mise en place de certificats HTTPS. Et des certificats qui doivent être approuvés !
+
+Pour cela, j'ai utilisé mkcert et installé les certificats dans les différents containers. Une fois tout en place, le projet final ressemble à cela :
+
+![Resultat](/medias/writeups/bad-dev/2025-06-06-17-32-40-image.png)
+
+L'ajout de deux containers nginx pour la terminaison TLS ajoute du réalisme et permet surtout l'envoie de cookies.
+
+Pour résoudre le challenge, l'utlisation de "credentials:'include'" est obligatoire afin de garder la session authentifiée.
+
+Si vous souhaitez essayer ce challenge les sources sont disponibles sur [Github]([sthack-tasks/2025/Web at main · shoxxdj/sthack-tasks · GitHub](https://github.com/shoxxdj/sthack-tasks/tree/main/2025/Web)) !
