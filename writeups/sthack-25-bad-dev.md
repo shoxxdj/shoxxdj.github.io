@@ -104,7 +104,7 @@ Le payload est aussi à adapter. Je commence par récupérer l'ensemble de la pa
 </script>
 ```
 
-![alt text](/medias/writeups/bad-dev/image-1.png)
+![Code Recu](/medias/writeups/bad-dev/image-1.png)
 
 Le code décodé ressemble à cela :
 
