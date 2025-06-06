@@ -9,6 +9,7 @@ tags:
   - "sthack"
   - "writeup"
 image: "/medias/writeups/bad-dev/baddev.jpg"
+outline: [2, 4]
 ---
 
 # Bad dev - Writeup Sthack 25
