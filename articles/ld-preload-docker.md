@@ -44,7 +44,7 @@ Cependant, je n'obtenais jamais de retours.
 
 Pour comprendre l'échec de cette simple image, il faut comprendre comment fonctionne le lancement d'une image via Docker.
 
-Une image est constituée d'un ensemble de couches, eux-mêmes représentant une où plusieurs commandes lancées pour créer l'image. Cependant, les commandes de type `RUN` ne sont executés qu'une fois et prennent fin une fois la couche produite. Il n'est pas envisageable d'écrire `RUN nc -e /bin/bash ...` en espérant que cette commande se lance lors de l'instanciation de l'image.
+Une image est constituée d'un ensemble de couches, elles-mêmes représentant une où plusieurs commandes lancées pour créer l'image. Cependant, les commandes de type `RUN` ne sont éxecutées qu'une fois et prennent fin une fois la couche produite. Il n'est pas envisageable d'écrire `RUN nc -e /bin/bash ...` en espérant que cette commande se lance lors de l'instanciation de l'image.
 
 Pour lancer des commandes au démarrage du container, il existe deux verbes : `CMD` et `ENTRYPOINT`.
 En théorie, `ENTRYPOINT` doit contenir le programme principal à lancer à la création du container et `CMD` les arguments.
@@ -360,3 +360,7 @@ Les extraits de code (librairie, serveur et Dockerfile) sont partagés sur ce re
 La documentation de ld.so :
 
 - [https://man7.org/linux/man-pages/man8/ld.so.8.html](https://man7.org/linux/man-pages/man8/ld.so.8.html)
+
+Un article sur LDPReload :
+
+- [https://repo.zenk-security.com/Techniques%20d.attaques%20%20.%20%20Failles/Quelques%20astuces%20avec%20LD_PRELOAD.pdf](https://repo.zenk-security.com/Techniques%20d.attaques%20%20.%20%20Failles/Quelques%20astuces%20avec%20LD_PRELOAD.pdf)
