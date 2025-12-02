@@ -140,15 +140,15 @@ Celle-ci va me permettre de charger une librairie de mon choix avant même que l
 
 Le point le plus intéressant et que dans un Dockerfile, il est possible de définir des variables d'environnement `ENV` et que celles-ci ne dépendent pas de la commande lancée.
 
-La contrainte est ici de créer une libraire, un script `bash` ne suffirait pas.
+La contrainte est ici de créer une librairie, un script `bash` ne suffirait pas.
 
-### Libraire
+### Librairie
 
 L'idée est maintenant de créer une librairie permettant de connaitre la ligne de commande lançant le processus. Et d'envoyer cette fameuse ligne de commande sur un serveur distant.
 
-Autre contrainte par défaut une libraire ça n'éxecute pas directement de code. Heureusement de nombreuses techniques permettent de contourner ce problème.
+Autre contrainte, par défaut une librairie ça n'éxecute pas directement de code. Heureusement de nombreuses techniques permettent de contourner ce problème.
 
-Le code de la libraire est le suivant :
+Le code de la librairie est le suivant :
 
 ```c
 // exec_hook.c
