@@ -1,0 +1,58 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import { SECTIONS, type SectionKey } from '../../consts';
+import { byDateDesc, formatDate, plainText } from '../../utils';
+
+export function getStaticPaths() {
+  return (Object.keys(SECTIONS) as SectionKey[]).map((section) => ({ params: { section }, props: { section } }));
+}
+
+const { section } = Astro.props;
+const meta = SECTIONS[section];
+
+const entries = (await getCollection(section)).sort(byDateDesc);
+
+// Regroupement par année (les entrées sont déjà triées)
+const groups: { year: number; entries: typeof entries }[] = [];
+for (const entry of entries) {
+  const year = entry.data.date.getUTCFullYear();
+  const last = groups[groups.length - 1];
+  if (last && last.year === year) last.entries.push(entry);
+  else groups.push({ year, entries: [entry] });
+}
+---
+
+<Base title={meta.title} description={meta.intro}>
+  <div class="container">
+    <header class="page-head">
+      <h1>{meta.title}</h1>
+      <p>{meta.intro}</p>
+    </header>
+
+    {
+      groups.map((group) => (
+        <section class="year-group">
+          <h2>{group.year}</h2>
+          <div>
+            {group.entries.map((entry) => (
+              <article class={`entry${entry.data.image ? '' : ' no-thumb'}`}>
+                <div>
+                  <h3>
+                    <a href={`/${section}/${entry.id}`}>{entry.data.title}</a>
+                  </h3>
+                  {entry.data.description && <p>{plainText(entry.data.description)}</p>}
+                  <time datetime={entry.data.date.toISOString()}>{formatDate(entry.data.date)}</time>
+                </div>
+                {entry.data.image && (
+                  <Image src={entry.data.image} alt="" width={240} height={176} loading="lazy" />
+                )}
+              </article>
+            ))}
+          </div>
+        </section>
+      ))
+    }
+  </div>
+</Base>

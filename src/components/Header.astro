@@ -1,0 +1,35 @@
+---
+import Unicorn from './Unicorn.astro';
+import { SECTIONS, type SectionKey } from '../consts';
+
+const path = Astro.url.pathname;
+const current = (key: SectionKey) => path === `/${key}` || path.startsWith(`/${key}/`);
+
+// Ordre d'origine : Writeups, CVE, Articles
+const order: SectionKey[] = ['writeups', 'cve', 'articles'];
+---
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="/" aria-label="Accueil"><Unicorn class="brand-unicorn" />shoxxdj<span>.fr</span></a>
+    <nav class="nav" aria-label="Navigation principale">
+      <span class="nav-links">
+        {
+          order.map((key) => (
+            <a href={`/${key}`} aria-current={current(key) ? 'page' : undefined}>
+              {SECTIONS[key].title}
+            </a>
+          ))
+        }
+      </span>
+      <span class="nav-tools">
+        <button class="icon-btn" type="button" data-search-open aria-label="Rechercher" title="Rechercher (/)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+        </button>
+        <button class="icon-btn" type="button" data-theme-toggle aria-label="Changer de thème" title="Changer de thème">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"></circle><path d="M12 4v16" ></path><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"></path></svg>
+        </button>
+      </span>
+    </nav>
+  </div>
+</header>

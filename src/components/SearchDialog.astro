@@ -1,0 +1,70 @@
+---
+// Recherche plein texte : l'index est généré par Pagefind après le build
+// (voir le script "build" de package.json). En développement (`npm run dev`)
+// l'index n'existe pas encore, un message l'indique.
+---
+
+<dialog id="search-dialog" class="search" aria-label="Recherche">
+  <div class="search-bar">
+    <span>Recherche</span>
+    <button type="button" data-search-close aria-label="Fermer">Fermer</button>
+  </div>
+  <div id="search-root"></div>
+</dialog>
+
+<script>
+  const dialog = document.getElementById('search-dialog') as HTMLDialogElement | null;
+  const root = document.getElementById('search-root');
+  let loaded = false;
+
+  function load(src: string) {
+    return new Promise<void>((resolve, reject) => {
+      const el = document.createElement('script');
+      el.src = src;
+      el.onload = () => resolve();
+      el.onerror = () => reject(new Error(`Impossible de charger ${src}`));
+      document.head.append(el);
+    });
+  }
+
+  async function init() {
+    if (loaded || !root) return;
+    loaded = true;
+    try {
+      const css = document.createElement('link');
+      css.rel = 'stylesheet';
+      css.href = '/pagefind/pagefind-ui.css';
+      document.head.append(css);
+      await load('/pagefind/pagefind-ui.js');
+      // @ts-expect-error fourni par pagefind-ui.js
+      new window.PagefindUI({ element: '#search-root', showSubResults: true, showImages: false, resetStyles: false });
+    } catch {
+      loaded = false;
+      root.innerHTML =
+        '<p class="search-msg">L\'index de recherche est généré lors du build : lancez <code>npm run build &amp;&amp; npm run preview</code> pour le tester en local.</p>';
+    }
+  }
+
+  async function openSearch() {
+    if (!dialog || dialog.open) return;
+    dialog.showModal();
+    await init();
+    dialog.querySelector<HTMLInputElement>('input')?.focus();
+  }
+
+  document.querySelectorAll('[data-search-open]').forEach((b) => b.addEventListener('click', openSearch));
+  document.querySelector('[data-search-close]')?.addEventListener('click', () => dialog?.close());
+  // clic sur le fond
+  dialog?.addEventListener('click', (e) => {
+    if (e.target === dialog) dialog.close();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    const target = e.target as HTMLElement;
+    const typing = target.matches('input, textarea, select, [contenteditable]');
+    if ((e.key === '/' && !typing && !e.metaKey && !e.ctrlKey) || ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k')) {
+      e.preventDefault();
+      openSearch();
+    }
+  });
+</script>

@@ -1,0 +1,44 @@
+---
+// Tête de licorne au trait (dessin original). Hérite de la couleur du texte ;
+// la corne et la crinière prennent la couleur d'accent.
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<svg class={`unicorn ${className ?? ''}`} viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+  <!-- corne -->
+  <path class="u-horn" d="M41 4 L35.5 22 L44 24.5 Z"></path>
+  <path class="u-horn" d="M38.6 12.5 L42.4 14"></path>
+  <path class="u-horn" d="M37.2 17.2 L43.2 19"></path>
+  <!-- oreille -->
+  <path d="M30 23 L27.5 13.5 L35.5 21"></path>
+  <!-- tête et cou -->
+  <path d="M35.5 22 C47 23 56 30 58 41 C58.6 45 56 47.5 52.5 47 L46.5 46 C44.5 49 41 50 38 49 L36 60 L16 60 C16 48 17 38 21 30 C23.5 26 27 23.5 30 23 Z"></path>
+  <!-- crinière -->
+  <path class="u-mane" d="M30 23 C22 24 16 32 14.5 42 C13.5 48 14 54 15 59"></path>
+  <path class="u-mane" d="M25.5 26 C19 29 14.5 36 12 44"></path>
+  <path class="u-mane" d="M21 31 C16 35 12 41 10 48"></path>
+  <!-- œil et naseau -->
+  <circle cx="43" cy="33.5" r="1.6" fill="currentColor" stroke="none"></circle>
+  <path d="M55.5 41.5 L54 40.5" class="u-nostril"></path>
+</svg>
+
+<style is:global>
+  .unicorn {
+    display: inline-block;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .unicorn .u-horn {
+    stroke: var(--accent);
+  }
+  .unicorn .u-mane {
+    stroke: var(--accent);
+    opacity: 0.85;
+  }
+</style>

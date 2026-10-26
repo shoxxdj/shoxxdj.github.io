@@ -1,0 +1,66 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import me from '../assets/me.jpg';
+import { SITE, SECTIONS, type SectionKey } from '../consts';
+
+// Ordre d'origine : Articles, CVE, Writeups
+const order: SectionKey[] = ['articles', 'cve', 'writeups'];
+---
+
+<Base>
+  <div class="container">
+    <section class="intro">
+      <div>
+        <h1>{SITE.name}</h1>
+        <p class="lead">{SITE.description}</p>
+        <a class="contact link" href="/contact">Contact →</a>
+      </div>
+      <div class="portrait-wrap">
+        <Image class="portrait" src={me} alt="Shoxxdj lors d'une conférence" width={680} height={578} loading="eager" />
+      </div>
+    </section>
+
+    <nav class="sections" aria-label="Rubriques">
+      {
+        order.map((key) => (
+          <a href={`/${key}`}>
+            <span class="t">{SECTIONS[key].title}</span>
+            <span class="d">{SECTIONS[key].details}</span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="home-links">
+      <section>
+        <h2>Talks</h2>
+        <ul>
+          <li><a class="link" href="https://www.facebook.com/groups/iutbayinfo/posts/9212462602101311/">JDA Bayonne 2024 : Pentester diaries</a></li>
+          <li><a class="link" href="https://hackvens.fr/2022/">Hackvens 2022 : Pentester diairies</a></li>
+          <li><a class="link" href="https://fr.scribd.com/document/725651235/Atelier-cybersecurite-et-si-c-etait-votre-tour">AFTE 2021: Atelier Cybersecurite: Et si c'était votre tour</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Press &amp; Articles &amp; Other</h2>
+        <ul>
+          <li><a class="link" href="https://www.youtube.com/watch?v=tstjWsBTAWw">Elan Medias : Tous les CONSEILS pour ne pas te faire PIRATER - Interview d'un hacker</a></li>
+          <li><a class="link" href="https://vimeo.com/1007581549/88656817c5">Cloudflare X Silicon</a></li>
+          <li><a class="link" href="https://www.sudouest.fr/sciences-et-technologie/nuit-du-hacking-ethique-securite-informatique-geeks-et-boissons-energisantes-dans-les-salons-de-la-mairie-de-bordeaux-19866976.php">Sthack 2024 - Sud Ouest</a></li>
+          <li><a class="link" href="https://idigital243.com/nuit-du-hacking-ethique-a-bordeaux-securite-informatique-geeks-et-boissons-energisantes/">Sthack 2024 - iDigital</a></li>
+          <li><a class="link" href="https://allegro-informatique.fr/allegro-informatique-fr-8121-nuit-du-hacking-ethique-qui-sont-les-genies-de-linformatique-derriere-les-portes-closes-des-salons-de-la-mairie-de">Sthack 2024 - Allegro</a></li>
+          <li>
+            Sthack with @Laluka :
+            <a class="link" href="https://www.youtube.com/watch?v=O1YeAICdf9I">P1</a>
+            <a class="link" href="https://www.youtube.com/watch?v=i6RR9uRENfI">P2</a>
+            <a class="link" href="https://www.youtube.com/watch?v=vIlBeqWjGuc">P3</a>
+          </li>
+          <li><a class="link" href="https://www.daf-mag.fr/Thematique/gestion-risque-1241/cyber-climat-2123/Breves/Cybercriminalite-comment-faire-face-366896.htm">DafMag - AFTE</a></li>
+          <li><a class="link" href="https://www.youtube.com/watch?v=9td0wmltXTA">Ytalk - Ransomware : prévention et défense</a></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</Base>

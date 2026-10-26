@@ -1,0 +1,17 @@
+---
+import Unicorn from './Unicorn.astro';
+import { SITE } from '../consts';
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <span class="footer-note">
+      © {new Date().getFullYear()} shoxxdj · fait avec <Unicorn class="footer-unicorn" /> et du café
+    </span>
+    <nav aria-label="Liens externes">
+      <a href="/contact">Contact</a>
+      <a href={SITE.github} rel="me noopener">GitHub</a>
+      <a href={SITE.x} rel="me noopener">X</a>
+    </nav>
+  </div>
+</footer>

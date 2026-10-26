@@ -1,0 +1,75 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import Base from '../layouts/Base.astro';
+import { CONTACT_LINKS, PGP } from '../consts';
+
+// Contenu de la clé publique, lu au build depuis public/
+let armored = '';
+if (PGP) {
+  const file = path.join(process.cwd(), 'public', PGP.keyFile);
+  if (fs.existsSync(file)) armored = fs.readFileSync(file, 'utf-8').trim();
+  else console.warn(`[contact] clé PGP introuvable : ${file}`);
+}
+---
+
+<Base title="Contact" description="Où me trouver : réseaux et clé PGP.">
+  <div class="container contact">
+    <header class="page-head">
+      <h1>Contact</h1>
+      <p>Où me trouver{PGP ? ", et comment m'écrire de façon chiffrée" : ''}.</p>
+    </header>
+
+    <section class="contact-section">
+      <h2>Sur le web</h2>
+      <nav class="sections" aria-label="Réseaux">
+        {
+          CONTACT_LINKS.map((link) => (
+            <a href={link.url} rel="me noopener">
+              <span class="t">{link.label}</span>
+              <span class="d">{link.handle}</span>
+              <span class="arrow" aria-hidden="true">↗</span>
+            </a>
+          ))
+        }
+      </nav>
+    </section>
+
+    {
+      PGP && (
+        <section class="contact-section">
+          <h2>PGP</h2>
+          <p class="pgp-label">Empreinte de ma clé publique</p>
+          <div class="fingerprint-row">
+            <code class="fingerprint" id="fingerprint">{PGP.fingerprint}</code>
+            <button class="copy-btn static" type="button" data-copy="#fingerprint">Copier</button>
+          </div>
+          <p class="pgp-actions">
+            <a class="link" href={PGP.keyFile} download>Télécharger la clé publique</a>
+          </p>
+          {armored && (
+            <details class="pgp-block">
+              <summary>Afficher la clé</summary>
+              <pre>{armored}</pre>
+            </details>
+          )}
+        </section>
+      )
+    }
+  </div>
+</Base>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const text = document.querySelector<HTMLElement>(btn.dataset.copy!)?.innerText ?? '';
+      try {
+        await navigator.clipboard.writeText(text.replace(/\s+/g, ' ').trim());
+        btn.textContent = 'Copié';
+      } catch {
+        btn.textContent = 'Échec';
+      }
+      setTimeout(() => (btn.textContent = 'Copier'), 1500);
+    });
+  });
+</script>

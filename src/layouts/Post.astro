@@ -1,0 +1,97 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { MarkdownHeading } from 'astro';
+import Base from './Base.astro';
+import Toc from '../components/Toc.astro';
+import { SECTIONS, type SectionKey } from '../consts';
+import { formatDate, plainText, visibleCategories } from '../utils';
+
+interface Props {
+  entry: CollectionEntry<SectionKey>;
+  section: SectionKey;
+  headings: MarkdownHeading[];
+}
+
+const { entry, section, headings } = Astro.props;
+const { title, date, description, categories, tags, image, outline } = entry.data;
+
+const labels = [...visibleCategories(categories, section), ...(tags ?? [])];
+const unique = [...new Set(labels)];
+---
+
+<Base
+  title={title}
+  description={plainText(description) || undefined}
+  image={image?.src}
+  type="article"
+>
+  <div class="container post-layout">
+    <div class="post-main">
+      <header class="post-head">
+        <a class="back" href={`/${section}`}>← {SECTIONS[section].title}</a>
+        <h1>{title}</h1>
+        <div class="post-meta">
+          <time datetime={date.toISOString()}>{formatDate(date)}</time>
+          {unique.length > 0 && <span>{unique.join(' · ')}</span>}
+        </div>
+      </header>
+
+      <Toc headings={headings} outline={outline} variant="inline" />
+
+      <article class="prose" data-pagefind-body>
+        <slot />
+      </article>
+    </div>
+
+    <aside class="post-aside">
+      <Toc headings={headings} outline={outline} variant="aside" />
+    </aside>
+  </div>
+</Base>
+
+<script>
+  // Bouton « Copier » sur chaque bloc de code
+  document.querySelectorAll<HTMLPreElement>('.prose pre').forEach((pre) => {
+    const wrap = document.createElement('div');
+    wrap.className = 'code-wrap';
+    pre.replaceWith(wrap);
+    wrap.append(pre);
+
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'copy-btn';
+    btn.textContent = 'Copier';
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(pre.innerText);
+        btn.textContent = 'Copié';
+      } catch {
+        btn.textContent = 'Échec';
+      }
+      setTimeout(() => (btn.textContent = 'Copier'), 1500);
+    });
+    wrap.append(btn);
+  });
+
+  // Surligne la section lue dans le sommaire latéral
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('.toc a')];
+  if (links.length && 'IntersectionObserver' in window) {
+    const byId = new Map(links.map((a) => [decodeURIComponent(a.hash.slice(1)), a]));
+    const targets = [...byId.keys()]
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => !!el);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            links.forEach((a) => a.classList.remove('active'));
+            byId.get(e.target.id)?.classList.add('active');
+          }
+        }
+      },
+      { rootMargin: '0px 0px -75% 0px' }
+    );
+    targets.forEach((t) => observer.observe(t));
+  }
+</script>

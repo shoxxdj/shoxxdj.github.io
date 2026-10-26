@@ -1,1 +1,0 @@
-<ContentList folder="writeups"/>
