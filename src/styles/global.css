@@ -39,6 +39,18 @@
 *::after {
   box-sizing: border-box;
 }
+.prose figure img {
+  display: block;
+  margin-inline: auto;          /* ← centre l'image */
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+.prose figcaption {
+  margin-top: 0.55rem;
+  text-align: center;           /* ← centre la légende */
+  font: 0.8125rem/1.5 var(--font-mono);
+  color: var(--muted);
+}
 
 html {
   -webkit-text-size-adjust: 100%;
