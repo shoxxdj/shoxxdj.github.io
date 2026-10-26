@@ -2,11 +2,12 @@
 import { getCollection, render } from 'astro:content';
 import Post from '../../layouts/Post.astro';
 import { SECTIONS, type SectionKey } from '../../consts';
+import { isPublished } from '../../utils';
 
 export async function getStaticPaths() {
   const paths = [];
   for (const section of Object.keys(SECTIONS) as SectionKey[]) {
-    for (const entry of await getCollection(section)) {
+  for (const entry of await getCollection(section, isPublished)) {
       paths.push({ params: { section, slug: entry.id }, props: { entry, section } });
     }
   }

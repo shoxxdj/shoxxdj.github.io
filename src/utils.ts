@@ -26,3 +26,4 @@ export function visibleCategories(categories: string[] = [], section: SectionKey
 export function byDateDesc<T extends { data: { date: Date } }>(a: T, b: T) {
   return b.data.date.getTime() - a.data.date.getTime();
 }
+export const isPublished = ({ data }: { data: { draft?: boolean } }) => import.meta.env.DEV || !data.draft;

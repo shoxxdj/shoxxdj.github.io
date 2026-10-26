@@ -19,6 +19,7 @@ const section = (name: string) =>
         categories: z.array(z.string()).optional(),
         tags: z.array(z.string()).optional(),
         image: image().optional(),
+	draft: z.boolean().optional(),
         // Niveaux de titres affichés dans le sommaire, ex. [2, 4]
         outline: z.tuple([z.number(), z.number()]).optional(),
       }),
