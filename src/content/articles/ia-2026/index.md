@@ -32,21 +32,30 @@ Les mécanismes d'informations ont également évolué. Depuis les années 2010 
 
 ### Une création qui dérange
 
-Impossible de considérer les capacités des LLM sans considérer les mécanismes qui ont été mis en place pour entrainer ces modèles. Le traitement des données par des employés sous-payés au Kenya qui ont demandé de meilleures conditions de travail et qui ont fini par le perdre au profit des Ghanéens sûrement moins regardants à ce moment-là. Des milliers de litres d'eau qu'utilise cette technologie pour fonctionner alors que le réchauffement climatique et ses conséquences sont de plus en plus visibles et irréversibles. A-t-on vraiment besoin de mettre de l'IA et de consommer ces ressources à tout bout de champ ?
+Impossible de considérer les capacités des LLM sans considérer les mécanismes qui ont été mis en place pour entrainer ces modèles. Le traitement des données par des employés sous-payés au Kenya qui ont demandé de meilleures conditions de travail et qui ont fini par le perdre au profit d'autres pays sûrement moins regardants à ce moment-là. Des milliers de litres d'eau qu'utilise cette technologie pour fonctionner alors que le réchauffement climatique et ses conséquences sont de plus en plus visibles et irréversibles. A-t-on vraiment besoin de mettre de l'IA et de consommer ces ressources à tout bout de champ ?
 
-[Article sur le traitement des employés au Kenya](https://www.france24.com/fr/%C3%A9co-tech/20230120-chatgpt-sama-l-entreprise-%C3%A9thique-derri%C3%A8re-les-scandales-de-mod%C3%A9ration-au-kenya)
+- [Article sur le traitement des employés au Kenya](https://www.france24.com/fr/%C3%A9co-tech/20230120-chatgpt-sama-l-entreprise-%C3%A9thique-derri%C3%A8re-les-scandales-de-mod%C3%A9ration-au-kenya)
+- [Article sur une pétition pour "travail toxique" au Kenya](https://itweb.africa/article/exclusive-openai-responds-to-kenyas-toxic-work-petition/lwrKxq3YNky7mg1o)
+- [Article sur la polution de l'eau des Datacenter](https://reporterre.net/Ils-en-ont-preleve-dix-fois-plus-comment-les-Big-Tech-minorent-la-consommation-en-eau-de)
+- [Article sur la consomation d'eau des Datacenter](https://www.journaldugeek.com/2026/10/23/ia-data-centers-installes-regions-leau-manque-non-sens-aggrave-rechauffement-climatique/)
 
 ![Protestations devant l'entreprise samasource](images/kenya_case.jpg)
 
-Pour nourrir les modèles d'IA, une entreprise comme Anthropic a acheté de nombreux livres anciens et les a détruits dans le but de les numériser. L'objet livre n'existe plus. Le contenu est stocké dans des bases de données. Qu'en est-il de son intégrité ? Quelle garantie que ce livre reste accessible ? Cette question nous nous la posons déjà lorsqu'un média disparait d'une plateforme de streaming.
+Pour nourrir les modèles d'IA, une entreprise comme Anthropic a acheté de nombreux livres anciens et les a détruits dans le but de les numériser. L'objet livre n'existe plus. Le contenu est stocké dans des bases de données. Qu'en est-il de son intégrité ? Quelle garantie que ce livre reste accessible ? Cette question nous nous la posons déjà lorsqu'un média disparait d'une plateforme de streaming. Ici c'est d'une oeuvre originale, parfois unique qu'il s'agit.
+
+Quelques références sur "le projet Panama" :
+
+- [Wikipedia](https://fr.wikipedia.org/wiki/Projet_Panama)
+- [Snac](https://snac.fr/2026/10/le-projet-panama-des-livres-rares-detruits/)
+- [SubReddit antiai](https://www.reddit.com/r/antiai/comments/1uv305v/the_most_antiai_story_imaginable_anthropic/)
 
 ![Découpe de la tranche du livre](images/anthropic-destroying-books.avif)
 
 Enfin, au cœur de ce que je considère être un problème il y a tous les cas d'utilisation "Pour faire de l'IA", je m'explique. Les entreprises actuelles subissent un stress important sur les marchés. L'IA est devenue un _game changer_, un critère pour démontrer aux autres l'avance technologique dans un monde ultra-concurrentiel.
 
-_Je fais de l'IA, donc je suis à jour sur les technologies._ Oui, et toute votre stack technique qui repose sur des technologies obsolètes ?
+_Je fais de l'IA, donc je suis à jour sur les technologies._ Oui, et toute votre stack technique qui repose sur des technologies obsolètes ? Réponse : "L'ia s'en occupera". Génial, trop hate qu'une IA aille patcher automatiquement mes serveurs. A moins que brancher une IA sur de tels système soit problématique ? Et quand aucun patch n'existe ?
 
-Et puis il y a toutes les décisions qui ont été déléguées à un modèle sur la base de "tiens prends ce sondage et dis-moi ce que je dois en conclure". La morale est plus que discutable. Les réunions sont à présent entièrement résumées par IA, alors à quoi bon écouter ?
+Et puis il y a toutes les décisions qui ont été déléguées à un modèle sur la base de "tiens prends ce sondage et dis-moi ce que je dois en conclure". La morale est plus que discutable. Les réunions sont à présent entièrement résumées par IA, alors à quoi bon écouter ? Petit à petit l'Humain s'oublie dans une intelligence qui n'a rien d'Humaine.
 
 Cette section pourrait s'agrandir continuellement tant les preuves d'utilisation "pour utiliser" sont présentes. Mais est-il possible d'esquiver les fameuses affiches qui en 2026 ont déferlé dans notre quotidien ? L'IA ce n'est pas une simple histoire de logiciel d'entreprise, c'est la vie quotidienne. De nombreux évènements en 2026 ont utilisé des affiches générées par IA. Les restaurants s'y mettent aussi et c'est toute une économie, celle du design et de la création qui vacille. Des logiciels comme Canva proposaient déjà une "simplification" du processus créatif, ici le seul processus réside dans l'écriture de prompts. Peut-on encore parler de "création" ? Je préfèrerais ici, répétition et adaptation.
 
@@ -67,6 +76,8 @@ Bien sûr, il est possible de penser aux avancées rapides et spectaculaires dan
 Voitures autonomes, robotique, réalisation de tâches "ingrates", de métiers "difficiles". L'IA arrive dans notre monde avec la promesse de résoudre ces difficultés.
 
 Le gain de temps sur de nombreuses tâches est indiscutable, notamment en développement. Et il faut reconnaitre que pour faire du code rapide qui répond à un besoin assez précis c'est imbattable. Avec les LLM j'ai pu créer des outils et des LAB très rapidement et me concentrer sur ce qui avait vraiment un intérêt pour moi à ce moment-là.
+
+J'utilise moi même énormément ces outils (paradoxal vu le paragraphe précédent, je le concoit) car le gain de temps, est impossible à meusurer. Cependant, j'ai conscience que le but est de résoudre des problèmes unitaires et non pas d'apprendre à résoudre par moi même. C'est une sorte de _cheat code_ qui permet de passer _rapidement_ au niveau suivant.
 
 ## Les cas de conscience
 
