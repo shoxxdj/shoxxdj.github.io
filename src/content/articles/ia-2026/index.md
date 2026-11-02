@@ -33,11 +33,14 @@ Les mécanismes d'informations ont également évolué. Depuis les années 2010 
 ### Une création qui dérange
 
 Impossible de considérer les capacités des LLM sans considérer les mécanismes qui ont été mis en place pour entrainer ces modèles. Le traitement des données par des employés sous-payés au Kenya qui ont demandé de meilleures conditions de travail et qui ont fini par le perdre au profit d'autres pays sûrement moins regardants à ce moment-là. Des milliers de litres d'eau qu'utilise cette technologie pour fonctionner alors que le réchauffement climatique et ses conséquences sont de plus en plus visibles et irréversibles. A-t-on vraiment besoin de mettre de l'IA et de consommer ces ressources à tout bout de champ ?
+Pendant que j'écris cet article, le monde découvre le projet "matador", la création d'un datacenter hors normes dedié a l'IA. Une folie environementale a venir. 
 
 - [Article sur le traitement des employés au Kenya](https://www.france24.com/fr/%C3%A9co-tech/20230120-chatgpt-sama-l-entreprise-%C3%A9thique-derri%C3%A8re-les-scandales-de-mod%C3%A9ration-au-kenya)
 - [Article sur une pétition pour "travail toxique" au Kenya](https://itweb.africa/article/exclusive-openai-responds-to-kenyas-toxic-work-petition/lwrKxq3YNky7mg1o)
 - [Article sur la polution de l'eau des Datacenter](https://reporterre.net/Ils-en-ont-preleve-dix-fois-plus-comment-les-Big-Tech-minorent-la-consommation-en-eau-de)
 - [Article sur la consomation d'eau des Datacenter](https://www.journaldugeek.com/2026/10/23/ia-data-centers-installes-regions-leau-manque-non-sens-aggrave-rechauffement-climatique/)
+- [Vidéo Le Monde sur le projet Matador](https://youtu.be/JrCfOzeWsgs?is=TE5j34gayJDHQk5r)
+
 
 ![Protestations devant l'entreprise samasource](images/kenya_case.jpg)
 
